@@ -33,7 +33,7 @@ def draw_txt(n, charset, size):
             continue
         # 非字体跳过
         font_file_arr = os.path.splitext(font_file)
-        if font_file_arr[1] not in ['.ttf', '.TTF']:
+        if font_file_arr[1] not in ['.ttf', '.TTF', '.ttc', '.otf']:
             continue
 
         print('=========={} start=========='.format(font_file_arr[0]))
@@ -58,7 +58,7 @@ def draw_txt(n, charset, size):
             text_size = font.getsize(char)
 
             # 自动调整字体大小避免超出边界, 至少留白水平10%
-            margin = [img_w - int(0.2 * img_w), img_h - int(0.2 * img_h)]
+            margin = [img_w - int(0.1 * img_w), img_h - int(0.1 * img_h)]
             while (text_size[0] > margin[0]) or (text_size[1] > margin[1]):
                 factor -= 0.01  # 控制字体大小
                 font = ImageFont.truetype(font_file, int(img_h * factor), 0)  # 加载字体
